@@ -1,5 +1,6 @@
 {
   "name": "sauce-demo-cypress",
+  "type": "module",
   "version": "1.0.0",
   "description": "Cypress E2E + API test suite for Sauce Demo with Allure reporting and CI/CD via GitHub Actions",
   "author": "Maxitestr",
@@ -13,11 +14,13 @@
   },
   "devDependencies": {
     "@shelex/cypress-allure-plugin": "2.41.2",
+    "@types/node": "26.5.0",
     "allure-commandline": "2.40.0",
     "cypress": "15.14.2",
     "eslint": "8.57.0",
     "eslint-plugin-cypress": "2.15.2",
-    "prettier": "3.3.2"
+    "prettier": "3.3.2",
+    "typescript": "~6.0.0"
   },
   "scripts": {
     "cy:open": "cypress open",

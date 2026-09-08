@@ -1,12 +1,14 @@
+import { allureStep } from '../utils/allure'
+
 class LoginPage {
   visitLoginPage() {
-    cy.allure().step('Открыть страницу входа Sauce Demo')
+    allureStep('Открыть страницу входа Sauce Demo')
     cy.visit('/')
     cy.get('[data-test="username"]').should('be.visible')
   }
 
   login(username = 'standard_user', password = 'secret_sauce') {
-    cy.allure().step('Авторизоваться')
+    allureStep('Авторизоваться')
     cy.get('[data-test="username"]').clear()
     cy.get('[data-test="username"]').type(username)
     cy.get('[data-test="password"]').clear()
@@ -16,8 +18,8 @@ class LoginPage {
   }
 
   // Заполняет форму и отправляет, не проверяя результат — для негативных сценариев
-  loginExpectError(username, password) {
-    cy.allure().step('Попытка входа с некорректными данными')
+  loginExpectError(username: string, password: string) {
+    allureStep('Попытка входа с некорректными данными')
     cy.get('[data-test="username"]').clear()
     cy.get('[data-test="username"]').type(username)
     cy.get('[data-test="password"]').clear()
@@ -27,23 +29,23 @@ class LoginPage {
 
   // Нажимает кнопку входа без заполнения полей — для проверки валидации пустых полей
   submitEmptyForm() {
-    cy.allure().step('Нажать кнопку входа с пустыми полями')
+    allureStep('Нажать кнопку входа с пустыми полями')
     cy.get('[data-test="login-button"]').click()
   }
 
   checkSuccessfulLogin() {
-    cy.allure().step('Проверить успешный вход')
+    allureStep('Проверить успешный вход')
     cy.get('.inventory_list').should('be.visible')
     cy.url().should('include', '/inventory')
   }
 
   checkLoginFailed() {
-    cy.allure().step('Проверить что вход не выполнен')
+    allureStep('Проверить что вход не выполнен')
     cy.url().should('not.include', '/inventory')
   }
 
-  checkLoginError(expectedMessage) {
-    cy.allure().step('Проверить сообщение об ошибке авторизации')
+  checkLoginError(expectedMessage: string) {
+    allureStep('Проверить сообщение об ошибке авторизации')
     cy.get('[data-test="error"]').should('be.visible').and('contain.text', expectedMessage)
   }
 }

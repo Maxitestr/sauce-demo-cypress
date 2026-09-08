@@ -1,8 +1,9 @@
+import { allureStep } from '../support/utils/allure'
 describe('Pokemon API', () => {
   const baseUrl = 'https://pokeapi.co/api/v2'
 
   it('GET /pokemon/bulbasaur — smoke test', () => {
-    cy.allure().step('Получить информацию о покемоне Bulbasaur')
+    allureStep('Получить информацию о покемоне Bulbasaur')
     cy.request('GET', `${baseUrl}/pokemon/bulbasaur`).should((response) => {
       expect(response.status).to.eq(200)
       expect(response.body.name.toLowerCase()).to.eq('bulbasaur')
@@ -12,7 +13,7 @@ describe('Pokemon API', () => {
   })
 
   it('GET /pokemon/0 — возвращает 404', () => {
-    cy.allure().step('Попытаться получить покемона с несуществующим ID')
+    allureStep('Попытаться получить покемона с несуществующим ID')
     cy.request({
       url: `${baseUrl}/pokemon/0`,
       failOnStatusCode: false
@@ -22,12 +23,12 @@ describe('Pokemon API', () => {
   })
 
   it('GET /pokemon?limit=10 — возвращает 10 покемонов', () => {
-    cy.allure().step('Получить первых 10 покемонов с лимитом')
+    allureStep('Получить первых 10 покемонов с лимитом')
     cy.request(`${baseUrl}/pokemon?limit=10&offset=0`).its('body.results').should('have.length', 10)
   })
 
   it('GET /type/fire — получить информацию о типе Fire', () => {
-    cy.allure().step('Получить информацию о типе Fire')
+    allureStep('Получить информацию о типе Fire')
     cy.request('GET', `${baseUrl}/type/fire`).should((response) => {
       expect(response.status).to.eq(200)
       expect(response.body.name).to.eq('fire')

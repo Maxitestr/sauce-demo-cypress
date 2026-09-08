@@ -24,16 +24,16 @@
 cypress/
 ├── e2e/                   # UI-тесты End-to-End
 │   ├── cart/
-│   │   ├── checkAddDeleteUserPath.cy.js   # Добавление и удаление товара
-│   │   ├── checkCartWithItem.cy.js        # Содержимое корзины
-│   │   ├── checkCheckoutFlow.cy.js        # Полный флоу оформления заказа
-│   │   └── checkEmptyCart.cy.js           # Пустая корзина
+│   │   ├── checkAddDeleteUserPath.cy.ts   # Добавление и удаление товара
+│   │   ├── checkCartWithItem.cy.ts        # Содержимое корзины
+│   │   ├── checkCheckoutFlow.cy.ts        # Полный флоу оформления заказа
+│   │   └── checkEmptyCart.cy.ts           # Пустая корзина
 │   ├── login/
-│   │   └── checkLogin.cy.js               # Позитивные и негативные сценарии входа
+│   │   └── checkLogin.cy.ts               # Позитивные и негативные сценарии входа
 │   └── products/
-│       └── checkProductsSorting.cy.js     # Каталог: отображение и сортировка
+│       └── checkProductsSorting.cy.ts     # Каталог: отображение и сортировка
 ├── api/
-│   └── pokemon.cy.js      # API-тесты (PokeAPI)
+│   └── pokemon.cy.ts      # API-тесты (PokeAPI)
 └── support/
     ├── e2e.js             # Глобальная настройка тестов
     └── pages/             # Page Object Model
@@ -97,7 +97,7 @@ npm run cy:open
 ### Один файл
 
 ```bash
-npx cypress run --spec "cypress/e2e/login/checkLogin.cy.js"
+npx cypress run --spec "cypress/e2e/login/checkLogin.cy.ts"
 ```
 
 ## Allure отчет
